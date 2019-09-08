@@ -6,7 +6,8 @@ import { HeroService } from '../hero.service';
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: [ './dashboard.component.css' ]
-})
+}) //without the decorator we have a class which is plain javascript
+
 export class DashboardComponent implements OnInit {
   heroes: Hero[] = [];
 

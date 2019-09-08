@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+//all a pipe does is transform a value
 
 @Pipe({
   name: 'strength'
