@@ -5,19 +5,11 @@ import { NO_ERRORS_SCHEMA, Input } from "@angular/core";
 import { HeroService } from "../hero.service";
 import { of } from "rxjs";
 import { By } from "@angular/platform-browser";
-
-// @Component({
-//     selector: 'app-hero',
-//     templateUrl: '<div></div>',
-//   })
-
-  class FakeHeroComponent {
-    // @Input() hero: Hero;
-
-  }
+import { HeroComponent } from "../hero/hero.component";
 
 
-describe('HeroesComponent (shallow tests)', () => {
+
+describe('HeroesComponent (deep tests)', () => {
     let fixture: ComponentFixture<HeroesComponent>;
     let mockHeroService;
     let HEROES;
@@ -32,29 +24,23 @@ describe('HeroesComponent (shallow tests)', () => {
         //mocking the service from the constructor
         TestBed.configureTestingModule({
             declarations: 
-            [HeroesComponent,
-             FakeHeroComponent   
-            ],
+            [HeroesComponent, HeroComponent],
             providers: [
                 { provide: HeroService, useValue: mockHeroService }
-            ]
-            // schemas: [NO_ERRORS_SCHEMA]
+            ],
+            schemas: [NO_ERRORS_SCHEMA]
         })
         fixture = TestBed.createComponent(HeroesComponent);
-    })
-
-    xit('should set heroes correctly from the service', () => {
         mockHeroService.getHeroes.and.returnValue(of(HEROES))
         fixture.detectChanges();
-
-        expect(fixture.componentInstance.heroes.length).toBe(3)
     })
 
-    xit('should create one li for each hero', () => {
+    it('should render each hero as a hero', () => {
         mockHeroService.getHeroes.and.returnValue(of(HEROES))
         fixture.detectChanges();
-
-        expect(fixture.debugElement.queryAll(By.css('li')).length).toBe(3)
     })
 
-})
+    it('should be true', () => {
+        expect(true).toBe(true)
+    })
+});
